@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <main>
+        <div class="iav-program-mode">
+            <button class="iav-mode-btn">☀︎</button>
+            <button class="iav-save-result">⬇️</button>
+            <button class="iav-calc-factorial">!</button>
+        </div>
+        <img src="image/iphone.png" alt="iphone.png">
+        <div class="iav-container">
+            <div class="iav-panel">
+                <p class="iav-result">0</p>
+            </div>
+            
+            <table>
+                <tr>
+                    <td><button id="ac" class="iav-btn iav-especial">AC</button></td>
+                    <td><button id="sign" class="iav-btn iav-especial">+/-</button></td>
+                    <td><button id="percentage" class="iav-btn iav-especial">%</button></td>
+                    <td><button id="division" class="iav-btn iav-operator">÷</button></td>
+                </tr>
+                
+                <tr>
+                    <td><button id="seven" class="iav-btn iav-number">7</button></td>
+                    <td><button id="eight" class="iav-btn iav-number">8</button></td>
+                    <td><button id="nine" class="iav-btn iav-number">9</button></td>
+                    <td><button id="multiplication" class="iav-btn iav-operator">×</button></td>
+                </tr>    
+                
+                <tr>
+                    <td><button id="four" class="iav-btn iav-number">4</button></td>
+                    <td><button id="five" class="iav-btn iav-number">5</button></td>
+                    <td><button id="six" class="iav-btn iav-number">6</button></td>
+                    <td><button id="subtraction" class="iav-btn iav-operator">-</button></td>
+                </tr>  
+                
+                <tr>
+                    <td><button id="one" class="iav-btn iav-number">1</button></td>
+                    <td><button id="two" class="iav-btn iav-number">2</button></td>
+                    <td><button id="three" class="iav-btn iav-number">3</button></td>
+                    <td><button id="addition" class="iav-btn iav-operator">+</button></td>
+                </tr>  
+
+                <tr>
+                    <td colspan="2"><button id="zero" class="iav-btn iav-number"><p id="zero">0</p></button></td>
+                    <td><button id="point" class="iav-btn iav-decimal">.</button></td>
+                    <td><button id="equal" class="iav-btn iav-operator">=</button></td>
+                </tr>  
+            </table>
+        </div>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
