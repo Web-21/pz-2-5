@@ -58,7 +58,7 @@ themeToggle.addEventListener("click", () => {
 
 saveButton.addEventListener("click", () => {
   savedResult = out.innerText; 
-  alert(`Результат ${savedResult} сохранен!`);
+  alert(`Result ${savedResult} saved!`);
 });
 
 
@@ -66,6 +66,6 @@ pasteButton.addEventListener("click", () => {
   if (savedResult !== null) {
     out.innerText = savedResult; 
   } else {
-    alert("Нет сохраненного результата!");
+    alert("None result was saved!");
   }
 });
