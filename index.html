@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="top-bar">
+            <button onclick="copyDisplay()">Copy</button>
+            <button onclick="pasteDisplay()">Paste</button>
+            <button onclick="switchTheme()">Theme</button>
+        </div>
+        <div class="screen" id="screen">0</div>
+        <div class="button-container">
+            <div class="btn clear" onclick="clearScreen()">AC</div>
+            <div class="btn toggle-sign" onclick="changeSign()">±</div>
+            <div class="btn percent" onclick="pressButton('%')">%</div>
+            <div class="btn operator" onclick="pressButton('/')">÷</div>
+            <div class="btn" onclick="pressButton('7')">7</div>
+            <div class="btn" onclick="pressButton('8')">8</div>
+            <div class="btn" onclick="pressButton('9')">9</div>
+            <div class="btn operator" onclick="pressButton('*')">×</div>
+            <div class="btn" onclick="pressButton('4')">4</div>
+            <div class="btn" onclick="pressButton('5')">5</div>
+            <div class="btn" onclick="pressButton('6')">6</div>
+            <div class="btn operator" onclick="pressButton('-')">-</div>
+            <div class="btn" onclick="pressButton('1')">1</div>
+            <div class="btn" onclick="pressButton('2')">2</div>
+            <div class="btn" onclick="pressButton('3')">3</div>
+            <div class="btn operator" onclick="pressButton('+')">+</div>
+            <div class="btn zero" onclick="pressButton('0')">0</div>
+            <div class="btn" onclick="pressButton('.')">.</div>
+            <div class="btn operator" onclick="calculate()">=</div>
+        </div>
+    </div>
+    <script src="logic.js"></script>
+</body>
+</html>
