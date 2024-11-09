@@ -20,7 +20,8 @@ buttons.forEach((button) => {
 
       case "=":
         try {
-          let result = eval(out.innerText);
+          let expression = out.innerText.replace(/×/g, "*");
+          let result = eval(expression);
           if (result.toString().length > maxDisplayLength) {
             result = result.toPrecision(maxDisplayLength - 1); 
           }
@@ -40,6 +41,19 @@ buttons.forEach((button) => {
                         "-" + out.innerText;
         break;
 
+      case "×": 
+      case "*":
+      case "+":
+      case "-":
+      case "/":
+        
+        if ("+-*/".includes(out.innerText.slice(-1))) {
+          out.innerText = out.innerText.slice(0, -1) + (buttonValue === "×" ? "*" : buttonValue);
+        } else {
+          out.innerText += (buttonValue === "×" ? "*" : buttonValue);
+        }
+        break;
+
       default:
         if (out.innerText.length < maxDisplayLength) {
           out.innerText = out.innerText === "0" ? 
@@ -49,6 +63,8 @@ buttons.forEach((button) => {
     }
   });
 });
+
+
 
 
 themeToggle.addEventListener("click", () => {
