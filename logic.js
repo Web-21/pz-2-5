@@ -63,7 +63,11 @@ function copyDisplay() {
 function pasteDisplay() {
     navigator.clipboard.readText().then(text => {
         if (!isNaN(text)) {
-            currentInput = text;
+            if (currentInput === '0') {
+                currentInput = text;
+            } else {
+                currentInput += text;
+            }
             lastChar = text[text.length - 1];
             updateScreen();
         }
