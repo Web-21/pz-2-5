@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="calculator.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="main-menu">
+      <div class="result">
+        <input type="text" id="display" disabled>
+      </div>
+      <div class="panel-of-work">
+        <div class="line">
+          <div class="block ac" onclick="deleteAll()">
+            AC
+          </div>
+          <div class="block plus-minus" onclick="changeSign()">+/-</div>
+          <div class="block percent" onclick="addOperator('%')">%</div>
+          <div class="yellow-block divide" onclick="addOperator('/')">÷</div>
+        </div>
+        <div class="line">
+          <div class="gray-block seven" onclick="addNumber(7)">7</div>
+          <div class="gray-block eight" onclick="addNumber(8)">8</div>
+          <div class="gray-block nine" onclick="addNumber(9)">9</div>
+          <div class="yellow-block multiply" onclick="addOperator('*')">×</div>
+        </div>
+        <div class="line">
+          <div class="gray-block four" onclick="addNumber(4)">4</div>
+          <div class="gray-block five"  onclick="addNumber(5)">5</div>
+          <div class="gray-block six"  onclick="addNumber(6)">6</div>
+          <div class="yellow-block minus" onclick="addOperator('-')">–</div>
+        </div>
+        <div class="line">
+          <div class="gray-block one" onclick="addNumber(1)">1</div>
+          <div class="gray-block two" onclick="addNumber(2)">2</div>
+          <div class="gray-block three" onclick="addNumber(3)">3</div>
+          <div class="yellow-block plus"  onclick="addOperator('+')">+</div>
+        </div>
+        <div class="line">
+          <div class="oval-block zero" onclick="addNumber(0)">0</div>
+          <div class="gray-block point" onclick="addNumber('.')">.</div>
+          <div class="yellow-block equals" onclick="findResult()">=</div>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <div id="copy-btn" onclick="copy()"><a>Copy</a></div>
+      <div id="paste-btn" onclick="paste()"><a>Paste</a></div>
+      <div id="change-color" onclick="changeColor()"><a>Change color</a></div>
+    </div>
+  </body>
+  <script src="operations.js"></script>
+</html>
