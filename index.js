@@ -3,12 +3,27 @@ const display = document.querySelector('.calculator__display');
 const one = document.querySelectorAll('.white');
 const two = document.querySelectorAll('.gray');
 const three = document.querySelectorAll('.orange');
+const copy = document.getElementById('copy');
+const paste = document.getElementById('paste');
 let currentInput = '';
 let previousInput = '';
 let operation = null;
 let counter = 1;
+let currentCopy = '';
 
 change.addEventListener('click', changeColorShemaFun);
+
+copy.addEventListener('click',copyFun);
+paste.addEventListener('click',pasteFun);
+
+
+function copyFun (){
+    currentCopy = currentInput;
+}
+function pasteFun(){
+    currentInput = currentCopy;
+    updateDisplay(currentInput);
+}
 
 function changeColorShemaFun() {
     counter += 1;

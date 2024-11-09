@@ -87,3 +87,28 @@ body{
     color: orange;
     cursor: pointer;
 }
+.btns{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 20px;
+}
+.copy{
+    width: 100px;
+    height: 30px;
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.paste{
+    width: 100px;
+    height: 30px;
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
