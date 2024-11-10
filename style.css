@@ -1,0 +1,212 @@
+
+.container {
+    width: 280px;
+    height: 560px;
+    background-color: #000;
+    margin: 50px auto;
+    border-radius: 20px;
+    color: #fff;
+    font-family: 'Verdana', sans-serif;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .display {
+    height: 120px;
+    width: 90%;
+    padding: 10px;
+    background: #000;  /* Чорний фон */
+    color: white;
+    font-size: 3rem;
+    text-align: right;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.save, .paste, .theme-toggle {
+    background-color: #444;  /* Темно-сірий фон */
+    color: #fff;  /* Білий текст */
+    padding: 8px 12px;  /* Відступи */
+    border: 2px solid #555;  /* Темна рамка */
+    border-radius: 5px;  /* Округлі краї */
+    cursor: pointer;
+    font-size: 1.1rem;  /* Розмір шрифту */
+  }
+  
+  .save:hover, .paste:hover, .theme-toggle:hover {
+    background-color: #555;  /* Світло-сірий фон при наведенні */
+  }
+  
+  .save:active, .paste:active, .theme-toggle:active {
+    background-color: #666;  /* Темніший фон при натисканні */
+  }
+  
+  
+  
+
+
+
+
+  .calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 рівні колонки */
+    grid-template-rows: repeat(5, 1fr); /* 5 рівних рядків */
+    gap: 7px;
+    justify-items: center;
+  }
+  
+  /* Стилі для кнопок */
+  .button {
+    width: 60px;
+    height: 60px;
+    background: #333;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 1.4rem;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s, border 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  /* Оранжеві кнопки */
+  .button-orange {
+    background-color: rgb(255, 157, 0); /* Оранжевий колір */
+    transition: none; /* Вимкнути ефект переходу для оранжевих кнопок */
+  }
+  
+  /* Кнопка з нулем */
+  .button_button-zero {    
+    width: 130px;
+    height: 60px;
+    background: #333;
+    border-radius: 40px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 1.4rem;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s, border 0.3s;
+    border: 2px solid transparent;
+    padding-right: 20px;
+    justify-content: flex-start;
+    grid-column: 1 / span 2; 
+    grid-row: 5;
+  }
+  
+  /* Стилі для ефектів для НЕ оранжевих кнопок */
+  .button:not(.button-orange):hover {
+    background-color: #555; /* Світло-сірий фон при наведенні для всіх, окрім оранжевих */
+  }
+  
+  .button:not(.button-orange):active {
+    background-color: #666; /* Темніший фон при натисканні для всіх, окрім оранжевих */
+  }
+  
+  /* Розташування кнопок по колонках і рядках */
+  .button.ac {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .button.plus-minus {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  .button.percent {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  
+  .button.division {
+    grid-column: 4;
+    grid-row: 1;
+  }
+  
+  .button.seven {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .button.eight {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  
+  .button.nine {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  
+  .button.multiply {
+    grid-column: 4;
+    grid-row: 2;
+    background-color: rgb(255, 157, 0); /* Оранжевий колір */
+  }
+  
+  .button.four {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  
+  .button.five {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  
+  .button.six {
+    grid-column: 3;
+    grid-row: 3;
+  }
+  
+  .button.minus {
+    grid-column: 4;
+    grid-row: 3;
+    background-color: rgb(255, 157, 0); /* Оранжевий колір */
+  }
+  
+  .button.one {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  
+  .button.two {
+    grid-column: 2;
+    grid-row: 4;
+  }
+  
+  .button.three {
+    grid-column: 3;
+    grid-row: 4;
+  }
+  
+  .button.plus {
+    grid-column: 4;
+    grid-row: 4;
+    background-color: rgb(255, 157, 0); /* Оранжевий колір */
+  }
+  
+  .button.dot {
+    grid-column: 3;
+    grid-row: 5;
+  }
+  
+  .button.equal {
+    grid-column: 4;
+    grid-row: 5;
+    background-color: rgb(255, 157, 0); /* Оранжевий колір */
+  }
+  
