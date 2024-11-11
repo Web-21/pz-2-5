@@ -5,14 +5,16 @@ let isLightTheme = false;
 document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("dark-theme");
     const themeButton = document.querySelector('.theme-toggle');
-    themeButton.innerText = "Light Theme";
+    if (themeButton) {
+        themeButton.innerText = "Light Theme";
+        themeButton.addEventListener("click", toggleTheme);
+    }
 });
 
 function input(value) {
     const lastChar = display.innerText.slice(-1);
 
     if (display.innerText === "0") {
-
         if (value === ".") {
             display.innerText = "0.";
         } else if (!isNaN(value)) {
@@ -23,10 +25,8 @@ function input(value) {
     } else if (display.innerText === "Error" || display.innerText === "Infinity") {
         display.innerText = value;
     } else if (isNaN(value) && isNaN(lastChar)) {
-
         display.innerText = display.innerText.slice(0, -1) + value;
     } else if (value === "." && display.innerText.split(/[\+\-\*\/]/).pop().includes(".")) {
-
         return;
     } else {
         display.innerText += value;
@@ -52,13 +52,15 @@ function calculate() {
         display.innerText = "Error";
     }
 
-
+    if (display.innerText === "Infinity" || display.innerText === "-Infinity") {
+        display.innerText = "Infinity";
+    }
 }
 
 function toggleSign() {
     if (display.innerText.startsWith('-')) {
         display.innerText = display.innerText.slice(1);
-    } else if (display.innerText !== "0" && display.innerText !== "Error") {
+    } else if (display.innerText !== "0" && display.innerText !== "Error" && display.innerText !== "Infinity") {
         display.innerText = '-' + display.innerText;
     }
 }
@@ -69,7 +71,11 @@ function saveResult() {
 
 function pasteResult() {
     if (memory) {
-        display.innerText = memory;
+        if (display.innerText === "0") {
+            display.innerText = memory;
+        } else {
+            display.innerText += memory;
+        }
     } else {
         alert("No saved result.");
     }
@@ -81,5 +87,7 @@ function toggleTheme() {
     document.body.classList.toggle('dark-theme', !isLightTheme);
 
     const themeButton = document.querySelector('.theme-toggle');
-    themeButton.innerText = isLightTheme ? "Dark Theme" : "Light Theme";
+    if (themeButton) {
+        themeButton.innerText = isLightTheme ? "Dark Theme" : "Light Theme";
+    }
 }
