@@ -5,6 +5,7 @@ const saveButton = document.querySelector(".save");
 const pasteButton = document.querySelector(".paste"); 
 const calculator = document.querySelector(".container"); 
 
+
 let savedResult = null; 
 const maxDisplayLength = 10; 
 
@@ -61,6 +62,11 @@ buttons.forEach((button) => {
         }
     }
   });
+});
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  document.body.classList.toggle('light-theme');
 });
 
 
