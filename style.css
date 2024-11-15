@@ -1,0 +1,110 @@
+/* Темна тема */
+body.dark-mode .wrapper {
+    background-color: #101010;
+    color: #e0e0e0;
+}
+
+body.dark-mode .output-screen {
+    background-color: #101010;
+    color: #e0e0e0;
+}
+
+body.dark-mode .btn-save, 
+body.dark-mode .btn-paste, 
+body.dark-mode .btn-toggle-theme {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+body.dark-mode .key {
+    background: #222;
+    color: #e0e0e0;
+}
+
+body.dark-mode .key-operator {
+    background-color: rgb(255, 150, 50);
+}
+
+/* Світла тема */
+body.light-mode .wrapper {
+    background-color: #f9f9f9;
+    color: #000;
+}
+
+body.light-mode .output-screen {
+    background-color: #f9f9f9;
+    color: #000;
+}
+
+body.light-mode .btn-save, 
+body.light-mode .btn-paste, 
+body.light-mode .btn-toggle-theme {
+    background-color: #ddd;
+    color: #000;
+    border: 1px solid #aaa;
+}
+
+body.light-mode .key {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
+body.light-mode .key-operator {
+    background-color: rgb(255, 150, 50);
+}
+
+/* Інші стилі */
+.wrapper {
+    width: 300px;
+    margin: 20px auto;
+    border-radius: 15px;
+    font-family: Arial, sans-serif;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.output-screen {
+    height: 80px;
+    width: 100%;
+    font-size: 2rem;
+    text-align: right;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.btn-save{
+    width: 75px;
+    height: 25px;
+    border-radius: 20px;
+}
+.btn-paste{
+    width: 75px;
+    height: 25px;
+    border-radius: 20px;
+}
+.btn-toggle-theme{
+    width: 75px;
+    height: 25px;
+    border-radius: 20px;
+}
