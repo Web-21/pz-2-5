@@ -45,7 +45,9 @@ buttons.forEach((button) => {
       case "+":
       case "-":
       case "/":
-        if ("+-*/".includes(display.innerText.slice(-1))) {
+        if (storedResult !== null && (display.innerText === "0" || display.innerText === "")) {
+          display.innerText = storedResult + (buttonText === "×" ? "*" : buttonText);
+        } else if ("+-*/".includes(display.innerText.slice(-1))) {
           display.innerText = display.innerText.slice(0, -1) + (buttonText === "×" ? "*" : buttonText);
         } else {
           display.innerText += (buttonText === "×" ? "*" : buttonText);
@@ -62,10 +64,6 @@ buttons.forEach((button) => {
   });
 });
 
-themeSwitch.addEventListener("click", () => {
-  calculator.classList.toggle("light-theme");
-});
-
 saveBtn.addEventListener("click", () => {
   storedResult = display.innerText;
   alert(`Result ${storedResult} has been saved!`);
@@ -73,8 +71,12 @@ saveBtn.addEventListener("click", () => {
 
 pasteBtn.addEventListener("click", () => {
   if (storedResult !== null) {
-    display.innerText = storedResult;
+    display.innerText = display.innerText === "0" ? storedResult : display.innerText + storedResult;
   } else {
     alert("No saved result!");
   }
+});
+
+themeSwitch.addEventListener("click", () => {
+  calculator.classList.toggle("light-theme");
 });
