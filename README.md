@@ -1,6 +1,9 @@
 # Practical lesson pz-2-5 WEB
 > In this lesson students should build a JavaScript calculator
 
+
+
+
 ### Acceptance criteria 
 *  As user I want to see web app according to design
 *  As user I want to have possibility to change different color shema for the calculator
