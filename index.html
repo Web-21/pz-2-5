@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="calculator" class="dark-theme">
+    <div id="display">0</div>
+    <div class="buttons">
+      <button onclick="clearDisplay()" class="control">AC</button>
+      <button onclick="toggleSign()" class="control">+/-</button>
+      <button onclick="calculatePercentage()" class="control">%</button>
+      <button onclick="operate('/')" class="operation">÷</button>
+      
+      
+      <button onclick="appendNumber(7)">7</button>
+      <button onclick="appendNumber(8)">8</button>
+      <button onclick="appendNumber(9)">9</button>
+      <button onclick="operate('*')" class="operation">×</button>
+      
+      <button onclick="appendNumber(4)">4</button>
+      <button onclick="appendNumber(5)">5</button>
+      <button onclick="appendNumber(6)">6</button>
+      <button onclick="operate('-')" class="operation">−</button>
+      
+      <button onclick="appendNumber(1)">1</button>
+      <button onclick="appendNumber(2)">2</button>
+      <button onclick="appendNumber(3)">3</button>
+      <button onclick="operate('+')" class="operation">+</button>
+      
+      <button onclick="appendNumber(0)" class="zero">0</button>
+      <button onclick="appendDot()">.</button>
+      <button onclick="calculate()" class="operation">=</button>
+      
+    </div>
+    <div class="extra-buttons">
+        <button onclick="saveResult()" class="wide-button">Save</button>
+        <button onclick="pasteResult()" class="wide-button">Paste</button>
+        <button onclick="toggleTheme()" class="wide-button">Toggle Theme</button>
+      </div>
+      
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
