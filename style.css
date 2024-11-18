@@ -1,0 +1,103 @@
+/* Основний стиль для калькулятора */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #a8a7a7;
+    font-family: Arial, sans-serif;
+}
+
+#calculator {
+    width: 280px; /* Зменшена ширина калькулятора */
+    background-color: #000000;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+#display {
+    text-align: right;
+    padding: 15px;
+    font-size: 2em;
+    background-color: #383737;
+    color: #fff;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #535252;
+    color: white;
+}
+
+.control {
+    background-color: #a5a5a5;
+    color: white;
+}
+
+.operation {
+    background-color: #ff9500;
+    color: white;
+}
+
+.zero {
+    grid-column: span 2;
+    border-radius: 30px;
+    width: calc(60px * 2 + 8px);
+}
+
+.extra-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.wide-button {
+    width: 80px; /* Зменшена ширина, щоб кнопки краще розміщувалися в рядку */
+    height: 50px;
+    border-radius: 25px; /* Овальна форма для кнопок */
+    font-size: 0.9em;
+    background-color: #a5a5a5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.wide-button:hover {
+    opacity: 0.8;
+}
+
+/* Світла тема */
+body.light-theme {
+    background-color: #e9cccc;
+}
+body.blue-theme {
+    background-color: #768595;
+    color: #fff;
+  }
+
+body.blue-theme #calculator{background-color: #16084d;}
+body.light-theme #calculator { background-color: #a63535; }
+body.light-theme #display { background-color: #fff; color: #000; }
+body.light-theme .control { background-color: #d4d4d2; color: #000; }
+body.light-theme button { background-color: #e5e5e5; color: #000; }
+body.light-theme .operation { background-color: #ff9500; color: #fff; }
