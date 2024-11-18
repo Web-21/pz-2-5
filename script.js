@@ -1,131 +1,138 @@
-const screen = document.getElementById('screen');
-let currentInput = '0';
-let previousInput = null;
-let operator = null;
-let lastChar = '';  
-let resetScreenOnNextDigit = false;
-
-function updateScreen() {
-    screen.textContent = currentInput;
-}
-
-function clearScreen() {
-    currentInput = '0';
-    previousInput = null;
-    operator = null;
-    resetScreenOnNextDigit = false;
-    updateScreen();
-}
+let currentOperation = null;
+let savedValue = null;
+let currentValue = null;
+let isNewInput = true;
 
 function pressButton(value) {
-    if (isOperator(value)) {
-        handleOperator(value);
-    } else if (value === '.') {
-        inputDecimal();
-    } else {
-        inputDigit(value);
-    }
-    lastChar = value;
-    updateScreen();
-}
-
-function inputDigit(digit) {
-    if (resetScreenOnNextDigit) {
-        currentInput = digit;
-        resetScreenOnNextDigit = false;
-    } else {
-        currentInput = currentInput === '0' ? digit : currentInput + digit;
-    }
-}
-
-function inputDecimal() {
-    if (resetScreenOnNextDigit) {
-        currentInput = '0.';
-        resetScreenOnNextDigit = false;
-    } else if (!currentInput.includes('.')) {
-        currentInput += '.';
-    }
-}
-
-function handleOperator(nextOperator) {
-    if (operator && !resetScreenOnNextDigit) {
+    const screen = document.getElementById('screen');
+    if (['+', '-', '*', '/'].includes(value)) {
+        const operatorButtons = document.querySelectorAll('.button.orange');
+        operatorButtons.forEach(button => button.classList.remove('highlight'));
+        
+        currentOperation = value;
+        currentValue = parseFloat(screen.innerText);
+        document.querySelector(`.button.orange[onclick="pressButton('${value}')"]`).classList.add('highlight');
+        isNewInput = true;
+    } else if (value === '=') {
         calculate();
+    } else {
+        if (isNewInput) {
+            screen.innerText = value;
+            isNewInput = false;
+        } else {
+            screen.innerText += value;
+        }
     }
-    previousInput = currentInput;
-    operator = nextOperator;
-    resetScreenOnNextDigit = true;
+}
+
+function pasteDisplay() {
+    if (savedValue !== null && currentOperation !== null) {
+        let currentValue = parseFloat(document.getElementById('screen').innerText);
+        switch (currentOperation) {
+            case '+':
+                currentValue += savedValue;
+                break;
+            case '-':
+                currentValue -= savedValue;
+                break;
+            case '*':
+                currentValue *= savedValue;
+                break;
+            case '/':
+                if (savedValue !== 0) {
+                    currentValue /= savedValue;
+                } else {
+                    alert("Деление на ноль невозможно");
+                    return;
+                }
+                break;
+        }
+        document.getElementById('screen').innerText = currentValue;
+        currentOperation = null;
+
+        // Удаляем подсветку после выполнения операции
+        const operatorButtons = document.querySelectorAll('.button.orange');
+        operatorButtons.forEach(button => button.classList.remove('highlight'));
+    } else {
+        alert("Нет сохраненного значения или операции");
+    }
 }
 
 function calculate() {
-    if (!operator || previousInput === null) return;
+    if (currentValue !== null && currentOperation !== null) {
+        const screen = document.getElementById('screen');
+        let secondValue = parseFloat(screen.innerText);
+        let result;
+        switch (currentOperation) {
+            case '+':
+                result = currentValue + secondValue;
+                break;
+            case '-':
+                result = currentValue - secondValue;
+                break;
+            case '*':
+                result = currentValue * secondValue;
+                break;
+            case '/':
+                if (secondValue !== 0) {
+                    result = currentValue / secondValue;
+                } else {
+                    alert("Деление на ноль невозможно");
+                    return;
+                }
+                break;
+        }
+        screen.innerText = result;
+        currentOperation = null;
+        currentValue = null;
+        isNewInput = true;
 
-    const prev = parseFloat(previousInput);
-    const current = parseFloat(currentInput);
-    let result = 0;
-
-    switch (operator) {
-        case '+':
-            result = prev + current;
-            break;
-        case '-':
-            result = prev - current;
-            break;
-        case '*':
-            result = prev * current;
-            break;
-        case '/':
-            result = current !== 0 ? prev / current : 'Error';
-            break;
+        // Удаляем подсветку после выполнения операции
+        const operatorButtons = document.querySelectorAll('.button.orange');
+        operatorButtons.forEach(button => button.classList.remove('highlight'));
     }
+}
 
-    currentInput = result.toString();
-    operator = null;
-    previousInput = null;
-    resetScreenOnNextDigit = true;
-    updateScreen();
+function addToDisplay(value) {
+    const screen = document.getElementById('screen');
+    if (screen.innerText === '0' && !['+', '-', '*', '/'].includes(value) && value !== '=') {
+        screen.innerText = value;
+    } else if (value !== '=') {
+        screen.innerText += value;
+    }
+}
+
+function clearScreen() {
+    const screen = document.getElementById('screen');
+    screen.innerText = '0';
+    currentOperation = null;
+    currentValue = null;
+    isNewInput = true;
+
+    const operatorButtons = document.querySelectorAll('.button.orange');
+    operatorButtons.forEach(button => button.classList.remove('highlight'));
 }
 
 function changeSign() {
-    if (currentInput !== '0') {
-        currentInput = currentInput.startsWith('-')
-            ? currentInput.slice(1)
-            : '-' + currentInput;
-    }
-    updateScreen();
+    const screen = document.getElementById('screen');
+    let currentValue = parseFloat(screen.innerText);
+    currentValue = -currentValue;
+    screen.innerText = currentValue;
 }
 
 function calculatePercentage() {
-    currentInput = (parseFloat(currentInput) / 100).toString();
-    updateScreen();
+    const screen = document.getElementById('screen');
+    let currentValue = parseFloat(screen.innerText);
+    currentValue = currentValue / 100;
+    screen.innerText = currentValue;
 }
 
 function saveResult() {
-    navigator.clipboard.writeText(currentInput).then(() => {
-        alert('Результат скопійовано в буфер обміну');
-    }).catch(err => {
-        alert('Не вдалося скопіювати в буфер обміну');
-    });
-}
-
-// Функція для вставки з буфера обміну
-function pasteDisplay() {
-    navigator.clipboard.readText().then(text => {
-        if (!isNaN(text)) {
-            if (currentInput === '0') {
-                currentInput = text;
-            } else {
-                currentInput += text;
-            }
-            lastChar = text[text.length - 1];
-            updateScreen();
-        }
-    });
+    const screen = document.getElementById('screen');
+    savedValue = parseFloat(screen.innerText);
+    alert("Значение сохранено: " + savedValue);
 }
 
 function switchTheme() {
     document.body.classList.toggle('light-theme');
-}
-
-function isOperator(value) {
-    return value === '+' || value === '-' || value === '*' || value === '/';
 }

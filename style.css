@@ -48,6 +48,11 @@ body {
     color: white;
 }
 
+.highlight {
+    box-shadow: 0 0 10px 5px #ff9500;
+}
+
+
 .dark { background-color: #505050; }
 .gray { background-color: #a5a5a5; }
 .orange { background-color: #ff9500; }
