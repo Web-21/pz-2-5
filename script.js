@@ -1,74 +1,88 @@
-const display = document.querySelector(".output-screen");
-const allKeys = document.querySelectorAll(".key");
-const themeSwitch = document.querySelector(".btn-toggle-theme");
-const saveBtn = document.querySelector(".btn-save");
-const pasteBtn = document.querySelector(".btn-paste");
+const screen = document.querySelector(".calc-screen");
+const calcButtons = document.querySelectorAll(".btn");
+const themeToggler = document.querySelector(".theme-toggle");
+const saveResultBtn = document.querySelector(".save-btn");
+const insertResultBtn = document.querySelector(".paste-btn");
+const calcContainer = document.querySelector(".calc");
 
-let memory = null;
-const maxChars = 12;
+let savedValue = null;
+const charLimit = 10;
 
-allKeys.forEach((key) => {
-  key.addEventListener("click", function (e) {
-    const value = e.target.innerText;
+calcButtons.forEach((btn) => {
+  btn.addEventListener("click", function (event) {
+    const btnContent = event.target.innerText;
 
-    switch (value) {
+    switch (btnContent) {
       case "AC":
-        display.innerText = "0";
+        screen.innerText = "0";
         break;
+
       case "=":
         try {
-          const expr = display.innerText.replace(/×/g, "*").replace(/,/g, ".");
-          let result = eval(expr);
-          if (result.toString().length > maxChars) {
-            result = result.toPrecision(maxChars - 2);
+          let equation = screen.innerText.replace(/×/g, "*");
+          let output = eval(equation);
+          if (output.toString().length > charLimit) {
+            output = output.toPrecision(charLimit - 1);
           }
-          display.innerText = result;
+          screen.innerText = output;
         } catch {
-          display.innerText = "Помилка";
+          screen.innerText = "Error";
         }
         break;
+
       case "%":
-        display.innerText = eval(display.innerText + "/100");
+        screen.innerText = eval(screen.innerText + "/100");
         break;
+
       case "+/-":
-        display.innerText = display.innerText.startsWith("-")
-          ? display.innerText.slice(1)
-          : "-" + display.innerText;
+        screen.innerText = screen.innerText.startsWith("-")
+          ? screen.innerText.slice(1)
+          : "-" + screen.innerText;
         break;
+
+      case "×":
+      case "*":
       case "+":
       case "-":
-      case "×":
       case "/":
-        if ("+-*/".includes(display.innerText.slice(-1))) {
-          display.innerText =
-            display.innerText.slice(0, -1) + (value === "×" ? "*" : value);
+        if (
+          savedValue !== null &&
+          (screen.innerText === "0" || screen.innerText === "")
+        ) {
+          screen.innerText =
+            savedValue + (btnContent === "×" ? "*" : btnContent);
+        } else if ("+-*/".includes(screen.innerText.slice(-1))) {
+          screen.innerText =
+            screen.innerText.slice(0, -1) +
+            (btnContent === "×" ? "*" : btnContent);
         } else {
-          display.innerText += value === "×" ? "*" : value;
+          screen.innerText += btnContent === "×" ? "*" : btnContent;
         }
         break;
+
       default:
-        if (display.innerText.length < maxChars) {
-          display.innerText =
-            display.innerText === "0" ? value : display.innerText + value;
+        if (screen.innerText.length < charLimit) {
+          screen.innerText =
+            screen.innerText === "0" ? btnContent : screen.innerText + btnContent;
         }
     }
   });
 });
 
-themeSwitch.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-  document.body.classList.toggle("light-mode");
+saveResultBtn.addEventListener("click", () => {
+  savedValue = screen.innerText;
+  alert(`Result ${savedValue} has been saved!`);
 });
 
-saveBtn.addEventListener("click", () => {
-  memory = display.innerText;
-  alert(`Значення ${memory} збережено.`);
-});
-
-pasteBtn.addEventListener("click", () => {
-  if (memory !== null) {
-    display.innerText = memory;
+insertResultBtn.addEventListener("click", () => {
+  if (savedValue !== null) {
+    screen.innerText =
+      screen.innerText === "0" ? savedValue : screen.innerText + savedValue;
   } else {
-    alert("Немає збереженого значення!");
+    alert("No saved result!");
   }
+});
+
+themeToggler.addEventListener("click", () => {
+  calcContainer.classList.toggle("light-theme");
 });

@@ -1,45 +1,41 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Обчислювач</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Smart Calculator</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body class="dark-mode"> 
-    <div class="wrapper">
-      <div class="toolbar">
-        <button class="btn-save">Зберегти</button>
-        <button class="btn-paste">Вставити</button>
-        <button class="btn-toggle-theme">Тема</button>
+  <body>
+    <div class="calc">
+      <div class="top-controls">
+        <button class="save-btn">Save</button>
+        <button class="paste-btn">Paste</button>
+        <button class="theme-toggle">Theme</button>
       </div>
-      <div class="output-screen">0</div>
-      <div class="keypad">
-        <div class="key key-secondary">AC</div>
-        <div class="key key-secondary key-sign">+/-</div>
-        <div class="key key-secondary key-percent">%</div>
-        <div class="key key-operator">/</div>
-
-        <div class="key key-digit">7</div>
-        <div class="key key-digit">8</div>
-        <div class="key key-digit">9</div>
-        <div class="key key-operator">×</div>
-
-        <div class="key key-digit">4</div>
-        <div class="key key-digit">5</div>
-        <div class="key key-digit">6</div>
-        <div class="key key-operator">-</div>
-
-        <div class="key key-digit">1</div>
-        <div class="key key-digit">2</div>
-        <div class="key key-digit">3</div>
-        <div class="key key-operator">+</div>
-
-        <div class="key key-zero">0</div>
-        <div class="key key-dot">,</div>
-        <div class="key key-equal">=</div>
+      <div class="calc-screen">0</div>
+      <div class="buttons">
+        <div class="btn bg-gray">AC</div>
+        <div class="btn plus-minus bg-gray">+/-</div>
+        <div class="btn percent bg-gray">%</div>
+        <div class="btn division">/</div>
+        <div class="btn seven">7</div>
+        <div class="btn eight">8</div>
+        <div class="btn nine">9</div>
+        <div class="btn multiply bg-orange">×</div>
+        <div class="btn four">4</div>
+        <div class="btn five">5</div>
+        <div class="btn six">6</div>
+        <div class="btn minus bg-orange">-</div>
+        <div class="btn one">1</div>
+        <div class="btn two">2</div>
+        <div class="btn three">3</div>
+        <div class="btn plus bg-orange">+</div>
+        <div class="btn zero">0</div>
+        <div class="btn dot">.</div>
+        <div class="btn equal bg-orange">=</div>
       </div>
     </div>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
