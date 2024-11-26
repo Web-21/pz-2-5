@@ -1,0 +1,121 @@
+.calculator {
+    width: 400px;
+    height: 570px;
+    background-color: black;
+    border: 1px solid black;
+    margin-left: 20%;
+    margin-right: 30px;
+    margin-top: 60px;
+}
+body{
+    user-select: none;
+}
+main{
+    display: flex;
+}
+.calculator-screen {
+    width: 400px;
+    height: 105px;
+}
+.calculator-calculator-buttons{
+    width: 400px;
+    height: 465px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 25px;
+}
+.calculator-button{
+    width: 75px;
+    height: 75px;
+    border-radius: 40px;
+    margin: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.big-calculator-button{
+    width: 160px;
+    height: 75px;
+    border-radius: 40px;
+    margin: 5px;
+    color: #fff;
+    display: flex;
+    cursor: pointer;
+}
+.calculator-button-zero{
+    width: 75px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    font-size: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.white{
+    background-color: rgb(188, 185, 185);
+    color: #000;
+    font-weight: 600;
+}
+.gray{
+    background-color: gray;
+}
+.orange{
+    background-color: orange;
+    font-size: 40px;
+}
+.calculator-screen{
+    color: #fff;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    font-size: 60px;
+    font-weight: 400;
+    width: 80%;
+    margin: auto;
+}
+.button{
+    width: 180px;
+    height: 50px;
+    background-color: greenyellow;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 2px solid orange;
+    color: black;
+    cursor: pointer;
+}
+.btns{
+    width: 300px;
+    margin-top: 20px;
+}
+.copy{
+    width: 100px;
+    height: 30px;
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.paste{
+    width: 100px;
+    height: 30px;
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 30px;
+    border-radius: 15px;
+}
+.more-options{
+    display: flex;
+    flex-direction: column;
+}
