@@ -21,7 +21,7 @@ function copyFun (){
     currentCopy = currentInput;
 }
 function pasteFun(){
-    handleNumber(currentCopyf);
+    handleNumber(currentCopy);
 }
 
 function swapColorShemaFun() {
@@ -46,7 +46,7 @@ function swapColorShemaFun1() {
         three.style.backgroundColor = 'orange';
         three.style.color = 'black';
     });
-    swap.style.backgroundColor = 'green';
+    swap.style.backgroundColor = 'yellow';
     swap.style.color = 'orange';
 }
 function calculate() {
