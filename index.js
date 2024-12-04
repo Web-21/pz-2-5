@@ -19,7 +19,7 @@ function copyFun (){
     currentCopy = currentInput;
 }
 function pasteFun(){
-    handleNumber(currentCopyf);
+    handleNumber(currentCopy);
 }
 let currentInput = '';
 let previousInput = '';
