@@ -21,7 +21,7 @@ function copyFun (){
     currentCopy = currentInput;
 }
 function pasteFun(){
-    handleNumber(currentCopyf);
+    handleNumber(currentCopy);
 }
 
 function swapColorShemaFun() {
