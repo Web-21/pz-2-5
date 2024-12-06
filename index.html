@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PZ-2-5</title>
+
+    <!-- Include stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <!-- =================================================================================== -->
+    <!-- MAIN CONTENT -->
+    <div class="calculator">
+
+        <nav class="calculator-plus">
+            <button onclick="copy()">Copy</button>
+            <button onclick="paste()">Paste</button>
+            <button onclick="theme()">Change theme</button>
+        </nav>
+
+        <div class="calculator-screen" id="calc-screen" >0</div>
+
+        <div class="calculator-main">
+            <div class="btn-AC" onclick="clearScreen()">AC</div>
+            <div class="btn-plusormi" onclick="changebtn()">+/-</div>
+            <div class="btn-per" onclick="press('%')">%</div>
+            <div class="btn-÷" onclick="press('/')">÷</div>
+
+            <div class="btn" onclick="press('7')">7</div>
+            <div class="btn" onclick="press('8')">8</div>
+            <div class="btn" onclick="press('9')">9</div>
+            <div class="btn-×" onclick="press('*')">×</div>
+
+            <div class="btn" onclick="press('4')">4</div>
+            <div class="btn" onclick="press('5')">5</div>
+            <div class="btn" onclick="press('6')">6</div>
+            <div class="btn--" onclick="press('-')">-</div>
+
+            <div class="btn" onclick="press('1')">1</div>
+            <div class="btn" onclick="press('2')">2</div>
+            <div class="btn" onclick="press('3')">3</div>
+            <div class="btn-plus" onclick="press('+')">+</div>
+
+            <div class="btn-0" onclick="press('0')">0</div>
+            <div class="btn" onclick="press('.')">.</div>
+            <div class="btn-calculate" onclick="calculate()">=</div>
+        </div>
+
+    </div>
+    <script src="main.js"></script>
+    <!-- =================================================================================== -->
+</body>
+
+</html>
