@@ -1,0 +1,129 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #202020; /* Static background */
+  margin: 0;
+}
+
+.calculator {
+  width: 300px;
+  background-color: #333; /* Default theme */
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease;
+}
+
+.screen {
+  height: 70px;
+  background-color: black;
+  color: white;
+  font-size: 2.5rem;
+  text-align: right;
+  line-height: 70px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn {
+  height: 60px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #555;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #666;
+}
+
+.btn:active {
+  background-color: #777;
+}
+
+.btn-operator {
+  background-color: orange;
+  color: white;
+}
+
+.btn-operator:hover {
+  background-color: #ff9f33;
+}
+
+.btn-zero {
+  grid-column: span 2;
+}
+
+.extra-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-save,
+.btn-paste,
+.btn-theme {
+  width: 30%;
+  height: 50px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  color: white;
+  background-color: #555;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-save:hover,
+.btn-paste:hover,
+.btn-theme:hover {
+  background-color: #666;
+}
+
+.btn-save:active,
+.btn-paste:active,
+.btn-theme:active {
+  background-color: #777;
+}
+
+/* Additional themes */
+.theme-white {
+  background-color: white;
+}
+
+.theme-white .screen {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+.theme-blue {
+  background-color: #003366;
+}
+
+.theme-blue .screen {
+  background-color: #00509e;
+  color: white;
+}
+
+.theme-green {
+  background-color: #224422;
+}
+
+.theme-green .screen {
+  background-color: #446644;
+  color: white;
+}
