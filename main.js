@@ -8,52 +8,129 @@ const calculator = document.querySelector(".calculator");
 
 // Змінні для логіки
 let savedValue = null;
-const themes = ["theme-white", "theme-blue", "theme-green"]; // Масив кольорів
+const themes = ["theme-white", "theme-blue", "theme-green"];
 let currentThemeIndex = 0;
+let currentExpression = ""; // Вираз для обчислення
+let isResultDisplayed = false;
+
+// Функція для оновлення дисплея
+function updateDisplay(value) {
+  display.innerText = value;
+}
+
+// Операції
+function handleAddition() {
+  currentExpression += "+";
+  updateDisplay(currentExpression);
+}
+
+function handleSubtraction() {
+  currentExpression += "-";
+  updateDisplay(currentExpression);
+}
+
+function handleMultiplication() {
+  currentExpression += "*";
+  updateDisplay(currentExpression);
+}
+
+function handleDivision() {
+  currentExpression += "/";
+  updateDisplay(currentExpression);
+}
+
+// Обчислення виразу
+function calculateResult() {
+  try {
+    const result = Function(`'use strict'; return (${currentExpression})`)();
+    if (isNaN(result)) throw new Error("Invalid Calculation");
+    updateDisplay(result);
+    currentExpression = result.toString();
+    isResultDisplayed = true;
+  } catch (err) {
+    updateDisplay("Error");
+    currentExpression = "";
+    isResultDisplayed = true;
+  }
+}
+
+// Очищення дисплея
+function clearDisplay() {
+  currentExpression = "";
+  updateDisplay("0");
+  isResultDisplayed = false;
+}
+
+// Зміна знака
+function toggleSign() {
+  if (currentExpression.startsWith("-")) {
+    currentExpression = currentExpression.slice(1);
+  } else {
+    currentExpression = "-" + currentExpression;
+  }
+  updateDisplay(currentExpression);
+}
+
+// Обробка введення числа
+function handleNumberInput(number) {
+  if (isResultDisplayed) {
+    currentExpression = number;
+    isResultDisplayed = false;
+  } else {
+    currentExpression += number;
+  }
+  updateDisplay(currentExpression);
+}
+
+// Обробка крапки
+function handleDecimal() {
+  if (!currentExpression.includes(".")) {
+    currentExpression += ".";
+  }
+  updateDisplay(currentExpression);
+}
 
 // Обробка натискання кнопок
 allButtons.forEach((btn) => {
   btn.addEventListener("click", (event) => {
-    const buttonText = event.target.innerText;
-
-    // Ігнорування кнопок, що не повинні змінювати дисплей
-    if (btn.classList.contains("btn-theme") || btn.classList.contains("btn-save") || btn.classList.contains("btn-paste")) {
-      return;
-    }
+    const buttonText = event.target.innerText.trim(); // Видаляємо зайві пробіли
 
     switch (buttonText) {
       case "AC":
-        display.innerText = "0"; // Очищення екрану
+        clearDisplay();
         break;
-
       case "=":
-        try {
-          // Обчислення виразу
-          let expression = display.innerText.replace(/×/g, "*").replace(/÷/g, "/");
-          let calculation = eval(expression);
-          display.innerText = calculation.toString();
-        } catch {
-          display.innerText = "Error"; // Помилка у виразі
-        }
+        calculateResult();
         break;
-
-      case "%":
-        display.innerText = eval(display.innerText + "/100"); // Відсотки
-        break;
-
       case "+/-":
-        display.innerText = display.innerText.startsWith("-")
-          ? display.innerText.slice(1)
-          : "-" + display.innerText; // Зміна знаку числа
+        toggleSign();
         break;
-
+      case "+":
+        handleAddition();
+        break;
+      case "-": // Стандартний дефіс
+      case "−": // Довге тире
+        handleSubtraction();
+        break;
+      case "×":
+      case "*":
+        handleMultiplication();
+        break;
+      case "÷":
+      case "/":
+        handleDivision();
+        break;
+      case ".":
+        handleDecimal();
+        break;
       default:
-        // Введення чисел і символів
-        display.innerText =
-          display.innerText === "0" ? buttonText : display.innerText + buttonText;
+        if (!isNaN(buttonText)) {
+          handleNumberInput(buttonText);
+        }
     }
   });
 });
+
 
 // Збереження результату
 saveResultButton.addEventListener("click", () => {
@@ -63,8 +140,9 @@ saveResultButton.addEventListener("click", () => {
 
 // Вставка збереженого результату
 pasteResultButton.addEventListener("click", () => {
-  if (savedValue !== null) {
-    display.innerText = savedValue;
+  if (savedValue !== null && savedValue !== "") {
+    currentExpression = savedValue;
+    updateDisplay(currentExpression);
   } else {
     alert("Немає збереженого значення!");
   }
