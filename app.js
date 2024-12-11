@@ -13,9 +13,7 @@ buttons.forEach((button) => {
     const buttonText = e.target.innerText;
 
     switch (buttonText) {
-      case "AC":
-        display.innerText = "0";
-        break;
+
 
       case "=":
         try {
@@ -33,7 +31,9 @@ buttons.forEach((button) => {
       case "%":
         display.innerText = eval(display.innerText + "/100");
         break;
-
+        case "AC":
+          display.innerText = "0";
+          break;
       case "+/-":
         display.innerText = display.innerText.startsWith("-") ?
                             display.innerText.slice(1) :
