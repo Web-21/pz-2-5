@@ -8,10 +8,9 @@ const calculator = document.querySelector(".calc");
 let savedResult = null;
 const maxDisplayLength = 10;
 
-
 buttons.forEach((button) => {
   button.addEventListener("click", function (e) {
-    const buttonValue = e.target.innerText; 
+    const buttonValue = e.target.innerText;
 
     switch (buttonValue) {
       case "AC":
@@ -40,6 +39,16 @@ buttons.forEach((button) => {
                         "-" + out.innerText;
         break;
 
+      case "F":
+        // Обчислення числа Фібоначчі
+        const n = parseInt(out.innerText); // Беремо значення, яке є в екрані
+        if (isNaN(n) || n < 0) {
+          out.innerText = "Error"; // Якщо не число або менше 0, виводимо помилку
+        } else {
+          out.innerText = fibonacci(n); // Виводимо число Фібоначчі
+        }
+        break;
+
       default:
         if (out.innerText.length < maxDisplayLength) {
           out.innerText = out.innerText === "0" ? 
@@ -50,5 +59,14 @@ buttons.forEach((button) => {
   });
 });
 
-
-
+// Функція для обчислення числа Фібоначчі
+function fibonacci(n) {
+  if (n === 0) return 0;
+  let a = 0, b = 1;
+  for (let i = 2; i <= n; i++) {
+    let temp = a + b;
+    a = b;
+    b = temp;
+  }
+  return b;
+}
