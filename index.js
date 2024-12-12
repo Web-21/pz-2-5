@@ -11,7 +11,7 @@ let operation = null;
 let counter = 1;
 let currentCopy = '';
 
-swap.addEventListener('click', swapColorShemaFun);
+swap.addEventListener('click', changeColorShemaFun);
 
 copy.addEventListener('click',copyFun);
 paste.addEventListener('click',pasteFun);   
@@ -24,30 +24,43 @@ function pasteFun(){
     handleNumber(currentCopy);
 }
 
-function swapColorShemaFun() {
-    counter += 1;
-    console.log(counter);
-    if (counter % 2 == 0) {
-        swapColorShemaFun2();
-    }
-    else {
-        swapColorShemaFun1();
-    }
+
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
-function swapColorShemaFun1() {
+function getRandomColorScheme() {
+    return {
+        oneBg: getRandomColor(),
+        twoBg: getRandomColor(),
+        threeBg: getRandomColor(),
+        threeColor: getRandomColor(),
+        changeBg: getRandomColor(),
+        changeColor: getRandomColor()
+    };
+}
+
+function applyColorScheme(scheme) {
     one.forEach(one => {
-        one.style.backgroundColor = 'rgb(188, 185, 185)';
+        one.style.backgroundColor = scheme.oneBg;
     });
     two.forEach(two => {
-        two.style.backgroundColor = 'gray';
+        two.style.backgroundColor = scheme.twoBg;
     });
     three.forEach(three => {
-        three.style.backgroundColor = 'orange';
-        three.style.color = 'black';
+        three.style.backgroundColor = scheme.threeBg;
+        three.style.color = scheme.threeColor;
     });
-    swap.style.backgroundColor = 'yellow';
-    swap.style.color = 'orange';
+    change.style.backgroundColor = scheme.changeBg;
+    change.style.color = scheme.changeColor;
+}
+
+function changeColorShemaFun() {
+    const randomScheme = getRandomColorScheme();
+    applyColorScheme(randomScheme);
 }
 function calculate() {
     let result;
@@ -81,21 +94,7 @@ function calculate() {
     previousInput = '';
     updateDisplay(currentInput);
 }
-function swapColorShemaFun2() {
-    one.forEach(one => {
-        one.style.backgroundColor = 'blue';
-    });
-    two.forEach(two => {
-        two.style.backgroundColor = 'yellow';
-        two.style.color = 'black';
-    });
-    three.forEach(three => {
-        three.style.backgroundColor = 'white';
-        three.style.color = 'black';
-    });
-    swap.style.backgroundColor = 'black';
-    swap.style.color = 'white'
-}
+
 
 function updateDisplay(value) {
     display.innerText = value || '0';
