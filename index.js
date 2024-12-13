@@ -25,28 +25,28 @@ function applyColorScheme1() {
         button.style.backgroundColor = 'rgb(188, 185, 185)';
     });
     grayButtons.forEach(button => {
-        button.style.backgroundColor = 'gray';
+        button.style.backgroundColor = 'orange';
     });
     orangeButtons.forEach(button => {
         button.style.backgroundColor = 'orange';
         button.style.color = 'black';
     });
-    colorToggle.style.backgroundColor = 'green';
+    colorToggle.style.backgroundColor = 'orange';
     colorToggle.style.color = 'orange';
 }
 
 function applyColorScheme2() {
     whiteButtons.forEach(button => {
-        button.style.backgroundColor = 'red';
+        button.style.backgroundColor = 'green';
     });
     grayButtons.forEach(button => {
         button.style.backgroundColor = 'green';
     });
     orangeButtons.forEach(button => {
-        button.style.backgroundColor = 'white';
+        button.style.backgroundColor = 'green';
         button.style.color = 'black';
     });
-    colorToggle.style.backgroundColor = 'black';
+    colorToggle.style.backgroundColor = 'green';
     colorToggle.style.color = 'white';
 }
 
