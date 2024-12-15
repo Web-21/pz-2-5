@@ -1,0 +1,226 @@
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calc-container {
+    background: #444;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 320px;
+}
+
+#display {
+    background: #b3d1b3;
+    color: #8a7f7e;
+    font-size: 2rem;
+    text-align: right;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 2px solid #555;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.buttons-panel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 15px;
+    font-size: 1.4rem;
+    border: 2px solid #555;
+    border-radius: 0;
+    cursor: pointer;
+    background: #222;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 4px #111;
+    transition: all 0.2s;
+}
+
+button:active {
+    box-shadow: 0 2px #111;
+    transform: translateY(2px);
+}
+
+button.operation {
+    background: #8a7f7e;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+button.reset {
+    background: #8a7f7e;
+}
+
+button.result {
+    background: #5cb85c;
+}
+
+button:hover {
+    background: #333;
+    opacity: 0.9;
+}
+
+.zero-btn {
+    grid-column: span 2;
+}
+
